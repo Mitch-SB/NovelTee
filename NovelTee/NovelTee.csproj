@@ -276,9 +276,18 @@
     <Compile Include="Migrations\201911160649289_RemoveTeesMVC.Designer.cs">
       <DependentUpon>201911160649289_RemoveTeesMVC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911160656369_AddCategory.cs" />
+    <Compile Include="Migrations\201911160656369_AddCategory.Designer.cs">
+      <DependentUpon>201911160656369_AddCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911160658002_PopulateCategory.cs" />
+    <Compile Include="Migrations\201911160658002_PopulateCategory.Designer.cs">
+      <DependentUpon>201911160658002_PopulateCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Color.cs" />
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\Image.cs" />
@@ -437,6 +446,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911160649289_RemoveTeesMVC.resx">
       <DependentUpon>201911160649289_RemoveTeesMVC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911160656369_AddCategory.resx">
+      <DependentUpon>201911160656369_AddCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911160658002_PopulateCategory.resx">
+      <DependentUpon>201911160658002_PopulateCategory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
