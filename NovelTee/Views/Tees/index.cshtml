@@ -1,0 +1,58 @@
+﻿@model IEnumerable<NovelTee.Models.Tee>
+
+@{
+    ViewBag.Title = "Tees";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int counter = 0;
+}
+
+<h2>Tees</h2>
+
+<!--TODO-->
+<div class="body-content">
+    <section class="sidebar">
+
+    </section>
+    <section class="container">
+        <div class="row">
+            @foreach (var tees in Model)
+            {
+                if (counter != 0 && counter % 3 == 0)
+                {
+                    @:</div>
+                    @:<div class="row">
+                }
+
+        <div class="col-md-4">
+            <div class="img-thumbnail">
+                
+                @if (tees.Image.ImgPath == null)
+                {
+                    <a href='@Url.Action("Product", "Tees", new { id = tees.Id }, null)'>
+                        <img src='@Url.Content("~/content/Images/NovelTee.png")' alt="Default" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;" />
+                    </a>
+                }
+                else
+                {
+                    <a href='@Url.Action("Product", "Tees", new { id = tees.Id}, null)'>
+                        <img src='@Url.Content(tees.Image.ImgPath)' alt="DbGood" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;" />
+                    </a>
+                }
+                
+                
+                <div class="caption">
+                    <h4>@Html.ActionLink(tees.Name, "Product", "Tees", new { id = tees.Id }, null)</h4>
+                    <p>@tees.Price</p>
+                    <p>@tees.Description</p>
+                </div>
+            </div>
+        </div>
+
+        counter++;
+            }
+        
+        </div>
+    </section>
+</div>
+<!--End TODO-->
+

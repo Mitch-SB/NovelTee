@@ -1,0 +1,38 @@
+﻿@model NovelTee.Models.Tee
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+<h2>@Model.Name</h2>
+<h2>@Model.Name</h2>
+<h2>@Model.Name</h2>
+
+<div class="container">
+    <div class="modal-title">
+
+    </div>
+    <div class="img-rounded left">
+        <div>
+            <!--Image preview-->
+        </div>
+    </div>
+    <div class="description">
+        <div>
+            <!--Description-->
+        </div>
+    </div>
+    <div>
+        <!--Tee variant-->
+        @using (Html.BeginForm("", "Tees"))
+        {
+            <div class="form-group">
+                @Html.LabelFor(t => t.ColorId)
+
+            </div>
+        }
+    </div>
+
+</div>
