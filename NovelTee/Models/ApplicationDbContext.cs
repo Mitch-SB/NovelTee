@@ -22,7 +22,8 @@ namespace NovelTee.Models
             users = value;
         }
 
-        public DbSet<Tee> Tees { get; set; }
+        public DbSet<Product> Products { get; set; }
+        
         public DbSet<Color> Colors { get; set; }
         public DbSet<Size> Sizes { get; set; }
         public DbSet<Gender> Genders { get; set; }

@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace NovelTee.Models
 {
-    public class Tee
+    public class Product
     {
         public int Id { get; set; }
 
@@ -15,11 +15,10 @@ namespace NovelTee.Models
         public string Name { get; set; }
 
         public string Description { get; set; }
-        
+
         public decimal Price { get; set; }
 
         public Image Image { get; set; }
-        public int? ImageId { get; set; }
-
+        public int ImageId { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace NovelTee.ViewModels
 {
     public class RandomTeeViewModel
     {
-        public Tee Tee { get; set; }
+        public Product Product { get; set; }
         public IEnumerable<Image> Image { get; set; }
 
     }

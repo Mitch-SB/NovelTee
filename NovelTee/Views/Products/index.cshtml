@@ -1,12 +1,12 @@
-﻿@model IEnumerable<NovelTee.Models.Tee>
+﻿@model IEnumerable<NovelTee.Models.Product>
 
 @{
-    ViewBag.Title = "Tees";
+    ViewBag.Title = "Products";
     Layout = "~/Views/Shared/_Layout.cshtml";
     int counter = 0;
 }
 
-<h2>Tees</h2>
+<h2>Products</h2>
 
 <!--TODO-->
 <div class="body-content">
@@ -15,7 +15,7 @@
     </section>
     <section class="container">
         <div class="row">
-            @foreach (var tees in Model)
+            @foreach (var product in Model)
             {
                 if (counter != 0 && counter % 3 == 0)
                 {
@@ -26,24 +26,24 @@
         <div class="col-md-4">
             <div class="img-thumbnail">
                 
-                @if (tees.Image.ImgPath == null)
+                @if (product.Image.ImgPath == null)
                 {
-                    <a href='@Url.Action("Product", "Tees", new { id = tees.Id }, null)'>
+                    <a href='@Url.Action("Product", "Products", new { id = product.Id }, null)'>
                         <img src='@Url.Content("~/content/Images/NovelTee.png")' alt="Default" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;" />
                     </a>
                 }
                 else
                 {
-                    <a href='@Url.Action("Product", "Tees", new { id = tees.Id}, null)'>
-                        <img src='@Url.Content(tees.Image.ImgPath)' alt="DbGood" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;" />
+                    <a href='@Url.Action("Product", "Products", new { id = product.Id}, null)'>
+                        <img src='@Url.Content(product.Image.ImgPath)' alt="DbGood" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;" />
                     </a>
                 }
                 
                 
                 <div class="caption">
-                    <h4>@Html.ActionLink(tees.Name, "Product", "Tees", new { id = tees.Id }, null)</h4>
-                    <p>@tees.Price</p>
-                    <p>@tees.Description</p>
+                    <h4>@Html.ActionLink(product.Name, "Product", "Products", new { id = product.Id }, null)</h4>
+                    <p>@product.Price</p>
+                    <p>@product.Description</p>
                 </div>
             </div>
         </div>

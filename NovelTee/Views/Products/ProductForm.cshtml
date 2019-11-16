@@ -1,27 +1,28 @@
-﻿@model NovelTee.ViewModels.TeeFormViewModel
+﻿@model NovelTee.ViewModels.ProductFormViewModel
+
 @{
     ViewBag.Title = ViewData["Title"];
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewBag.Title Tee</h2>
+<h2>@ViewBag.Title Product</h2>
 
 <div class="container">
     <div class="content">
         <div class="title">
-            @Model.Tee.Name
+            @Model.Product.Name
         </div>
         <div class="img-preview">
             <div>
                 <!--Image preview-->
-                <img src="@Url.Content(Model.Tee.Image.ImgPath)" />
+                <img src="@Url.Content(Model.Product.Image.ImgPath)" />
             </div>
         </div>
         <div>
             <div>
                 <!--Description-->
                 <p class="options">
-                    @Model.Tee.Description
+                    @Model.Product.Description
                 </p>
             </div>
         </div>
@@ -29,7 +30,7 @@
             <!--
                 Tee variant => Future Order
                 -->
-            @using (Html.BeginForm("AddToCart", "Tees"))
+            @using (Html.BeginForm("AddToCart", "Products"))
             {
 
                 <div class="form-group">

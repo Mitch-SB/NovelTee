@@ -6,9 +6,9 @@ using NovelTee.Models;
 
 namespace NovelTee.ViewModels
 {
-    public class TeeFormViewModel
+    public class ProductFormViewModel
     {
-        public Tee Tee { get; set; }
+        public Product Product { get; set; }
         public TeeVariant TeeVariant { get; set; }
         public IEnumerable<Image> Image { get; set; }
         public IEnumerable<Color> Color { get; set; }
