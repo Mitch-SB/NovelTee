@@ -296,13 +296,16 @@
     <Compile Include="Migrations\201911170704220_DeleteImageFromProduct.Designer.cs">
       <DependentUpon>201911170704220_DeleteImageFromProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911170709584_DeleteImagesModel.cs" />
+    <Compile Include="Migrations\201911170709584_DeleteImagesModel.Designer.cs">
+      <DependentUpon>201911170709584_DeleteImagesModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Color.cs" />
     <Compile Include="Models\Gender.cs" />
-    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Size.cs" />
     <Compile Include="Models\TeeVariant.cs" />
@@ -312,7 +315,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\NewProductFormViewModel.cs" />
-    <Compile Include="ViewModels\RandomTeeViewModel.cs" />
     <Compile Include="ViewModels\ProductFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -474,6 +476,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911170704220_DeleteImageFromProduct.resx">
       <DependentUpon>201911170704220_DeleteImageFromProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911170709584_DeleteImagesModel.resx">
+      <DependentUpon>201911170709584_DeleteImagesModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

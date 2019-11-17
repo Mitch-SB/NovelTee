@@ -42,7 +42,6 @@ namespace NovelTee.Controllers
             var viewModel = new ProductFormViewModel
             {
                 Product = product,
-                Image = _context.Images.ToList(),
                 Color = _context.Colors.ToList(),
                 Gender = _context.Genders.ToList(),
                 Size = _context.Sizes.ToList()
@@ -60,7 +59,6 @@ namespace NovelTee.Controllers
             var viewModel = new ProductFormViewModel
             {
                 Product = product,
-                Image = _context.Images.ToList(),
                 Color = _context.Colors.ToList(),
                 Gender = _context.Genders.ToList(),
                 Size = _context.Sizes.ToList()

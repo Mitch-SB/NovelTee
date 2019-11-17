@@ -28,7 +28,6 @@ namespace NovelTee.Models
         public DbSet<Color> Colors { get; set; }
         public DbSet<Size> Sizes { get; set; }
         public DbSet<Gender> Genders { get; set; }
-        public DbSet<Image> Images { get; set; }
         public DbSet<TeeVariant> TeeVariants { get; set; }
 
 
