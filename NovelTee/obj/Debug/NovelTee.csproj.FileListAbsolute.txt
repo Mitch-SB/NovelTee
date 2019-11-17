@@ -278,3 +278,6 @@ C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrat
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.RemoveTeesMVC.resources
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.AddCategory.resources
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.PopulateCategory.resources
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.AddCategoryToProduct.resources
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.AddImagePathToProduct.resources
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.DeleteImageFromProduct.resources

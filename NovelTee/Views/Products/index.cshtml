@@ -26,7 +26,7 @@
         <div class="col-md-4">
             <div class="img-thumbnail">
                 
-                @if (product.Image.ImgPath == null)
+                @if (product.ImagePath == null)
                 {
                     <a href='@Url.Action("Product", "Products", new { id = product.Id }, null)'>
                         <img src='@Url.Content("~/content/Images/NovelTee.png")' alt="Default" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;" />
@@ -35,7 +35,7 @@
                 else
                 {
                     <a href='@Url.Action("Product", "Products", new { id = product.Id}, null)'>
-                        <img src='@Url.Content(product.Image.ImgPath)' alt="DbGood" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;" />
+                        <img src='@Url.Content(product.ImagePath)' alt="DbGood" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;" />
                     </a>
                 }
                 

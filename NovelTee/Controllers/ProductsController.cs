@@ -27,7 +27,8 @@ namespace NovelTee.Controllers
         public ViewResult Index()
         {
             //var tees = GetTees();
-            var product = _context.Products.Include(t => t.Image).ToList();
+            //var product = _context.Products.Include(t => t.Image).ToList();
+            var product = _context.Products.ToList();
 
             return View(product);
         }
@@ -68,6 +69,26 @@ namespace NovelTee.Controllers
             ViewData["Title"] = "Product";
 
             return View("ProductForm", viewModel);
+        }
+        
+        public ActionResult New()
+        {
+            //var teeVariants = _context.TeeVariants.SingleOrDefault();
+            //var product = _context.Products.SingleOrDefault();
+
+            var viewModel = new NewProductFormViewModel
+            {
+                //TeeVariant = teeVariants,
+                //Product = product,
+                //Color = _context.Colors.ToList(),
+                //Size = _context.Sizes.ToList(),
+                //Gender = _context.Genders.ToList(),
+                Category = _context.Categories.ToList()
+
+
+            };
+            
+            return View(viewModel);
         }
 
         public ActionResult AddToCart(ProductFormViewModel viewModel)

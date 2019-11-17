@@ -18,7 +18,12 @@ namespace NovelTee.Models
 
         public decimal Price { get; set; }
 
-        public Image Image { get; set; }
-        public int ImageId { get; set; }
+        public Category Category { get; set; }
+        [Display(Name = "Category")]
+        public byte CategoryID { get; set; }
+
+        public String ImagePath { get; set; }
+        //public HttpPostedFile ImageFile { get; set; }
+
     }
 }

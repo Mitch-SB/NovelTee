@@ -15,7 +15,7 @@
         <div class="img-preview">
             <div>
                 <!--Image preview-->
-                <img src="@Url.Content(Model.Product.Image.ImgPath)" />
+                <img src="@Url.Content(Model.Product.ImagePath)" alt="ImagePathIsEmpty" />
             </div>
         </div>
         <div>
@@ -46,6 +46,7 @@
                     @Html.LabelFor(t => t.TeeVariant.SizeId)
                     @Html.DropDownListFor(t => t.TeeVariant.SizeId, new SelectList(Model.Size, "Id", "Name"), "Select Size", new { @class = "form-control" })
                 </div>
+                <!--Quantity-->
                 <button type="submit" class="btn btn-primary">Add to Cart</button>
             }
         </div>
