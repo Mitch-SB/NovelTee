@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NovelTee.Models
 {
@@ -22,8 +23,11 @@ namespace NovelTee.Models
         [Display(Name = "Category")]
         public byte CategoryID { get; set; }
 
+        [Display(Name = "Upload File")]
         public String ImagePath { get; set; }
-        //public HttpPostedFile ImageFile { get; set; }
+
+        [NotMapped]
+        public HttpPostedFileBase ImageFile { get; set; }
 
     }
 }

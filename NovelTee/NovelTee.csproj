@@ -300,6 +300,10 @@
     <Compile Include="Migrations\201911170709584_DeleteImagesModel.Designer.cs">
       <DependentUpon>201911170709584_DeleteImagesModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911170832194_TestMigration.cs" />
+    <Compile Include="Migrations\201911170832194_TestMigration.Designer.cs">
+      <DependentUpon>201911170832194_TestMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -479,6 +483,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911170709584_DeleteImagesModel.resx">
       <DependentUpon>201911170709584_DeleteImagesModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911170832194_TestMigration.resx">
+      <DependentUpon>201911170832194_TestMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

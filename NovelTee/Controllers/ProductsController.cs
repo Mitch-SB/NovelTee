@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using NovelTee.Models;
 using NovelTee.ViewModels;
 using System.Data.Entity;
+using System.IO;
+using System.Configuration;
 
 namespace NovelTee.Controllers
 {
@@ -68,25 +70,40 @@ namespace NovelTee.Controllers
 
             return View("ProductForm", viewModel);
         }
+
+        [HttpPost]
+        public ActionResult CreateProduct(NewProductFormViewModel newProduct)
+        {
+            //Get File Name
+            var fileName = Path.GetFileNameWithoutExtension(newProduct.ImageFile.FileName);
+            //Get File Extension
+            var fileExtension = Path.GetExtension(newProduct.ImageFile.FileName);
+            //Add Current Date to Attached File Name
+            fileName = DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + fileName.Trim() + fileExtension;
+            //Get Upload path from Web.Config file AppSettings
+            string uploadPath = ConfigurationManager.AppSettings["UserImagePath"].ToString();
+            //Create complete path to store in server
+            newProduct.Product.ImagePath = uploadPath + fileName;
+            //Copy and Save File into server
+            newProduct.ImageFile.SaveAs(newProduct.Product.ImagePath);
+
+            _context.Products.Add(newProduct.Product);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Products");
+        }
         
         public ActionResult New()
         {
-            //var teeVariants = _context.TeeVariants.SingleOrDefault();
-            //var product = _context.Products.SingleOrDefault();
-
+            var categories = _context.Categories.ToList();
             var viewModel = new NewProductFormViewModel
             {
-                //TeeVariant = teeVariants,
-                //Product = product,
-                //Color = _context.Colors.ToList(),
-                //Size = _context.Sizes.ToList(),
-                //Gender = _context.Genders.ToList(),
-                Category = _context.Categories.ToList()
-
+                Product = new Product(),
+                Category = categories
 
             };
             
-            return View(viewModel);
+            return View("New", viewModel);
         }
 
         public ActionResult AddToCart(ProductFormViewModel viewModel)

@@ -15,7 +15,18 @@
         <div class="img-preview">
             <div>
                 <!--Image preview-->
-                <img src="@Url.Content(Model.Product.ImagePath)" alt="ImagePathIsEmpty" />
+                @*<img src="@Url.Content(Model.Product.ImagePath)" alt="ImagePathIsEmpty" />*@
+
+                @if (Model.Product.ImagePath == null)
+                {
+                        <img src='@Url.Content("~/content/Images/NovelTee.png")' alt="Default" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;" />
+                    
+                }
+                else
+                {
+                        <img src='@Url.Content(Model.Product.ImagePath)' alt="DbGood" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;" />
+                }
+
             </div>
         </div>
         <div>

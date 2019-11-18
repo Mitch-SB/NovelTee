@@ -28,29 +28,30 @@
             <!--
                 Tee variant => Future Order
                 -->
-            @using (Html.BeginForm("", "Products"))
+            @using (Html.BeginForm("CreateProduct", "Products", FormMethod.Post, new { enctype = "multipart/form-data"}))
             {
 
                 <div class="form-group">
-                    @Html.LabelFor(t => t.Product.Name)
-                    @Html.TextBoxFor(t => t.Product.Name)
+                    @Html.LabelFor(p => p.Product.Name)
+                    @Html.TextBoxFor(p => p.Product.Name)
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(t => t.Product.Description)
-                    @Html.TextBoxFor(t => t.Product.Description)
+                    @Html.LabelFor(p => p.Product.Description)
+                    @Html.TextBoxFor(p => p.Product.Description)
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(t => t.Product.Price)
-                    @Html.TextBoxFor(t => t.Product.Price)
+                    @Html.LabelFor(p => p.Product.Price)
+                    @Html.TextBoxFor(p => p.Product.Price)
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(t => t.Product.ImagePath)
+                    @Html.LabelFor(p => p.Product.ImagePath)
                     <input type="file" name="ImageFile" required />
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(t => t.Product.CategoryID)
-                    @Html.DropDownListFor(t => t.Product.CategoryID, new SelectList(Model.Category, "Id", "Cat_Name"), "Select Category", new { @class = "form-control" })
+                    @Html.LabelFor(p => p.Product.CategoryID)
+                    @Html.DropDownListFor(p => p.Product.CategoryID, new SelectList(Model.Category, "Id", "Cat_Name"), "Select Category", new { @class = "form-control" })
                 </div>
+                @Html.HiddenFor(p => p.Product.Id)
                 <!--Quantity-->
                 <button type="submit" class="btn btn-primary">Add New Product</button>
             }
