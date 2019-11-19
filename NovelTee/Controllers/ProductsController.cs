@@ -85,7 +85,7 @@ namespace NovelTee.Controllers
             //Create complete path to store in server
             newProduct.Product.ImagePath = uploadPath + fileName;
             //Copy and Save File into server
-            newProduct.ImageFile.SaveAs(newProduct.Product.ImagePath);
+            newProduct.ImageFile.SaveAs(Server.MapPath(Path.Combine(uploadPath, fileName)));
 
             _context.Products.Add(newProduct.Product);
             _context.SaveChanges();
