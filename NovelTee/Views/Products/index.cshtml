@@ -13,7 +13,11 @@
     <section class="sidebar">
 
     </section>
+
+   
+
     <section class="container">
+        @Html.ActionLink("Add New Product", "New", "Products", new { @class = "btn btn-primary" })
         <div class="row">
             @foreach (var product in Model)
             {
@@ -44,7 +48,8 @@
                     <h4>@Html.ActionLink(product.Name, "Product", "Products", new { id = product.Id }, null)</h4>
                     <p>@product.Price</p>
                     <p>@product.Description</p>
-                </div>
+                    <p>@Html.ActionLink("Edit", "Edit", "Products", new { id = product.Id }, null)</p>
+</div>
             </div>
         </div>
 

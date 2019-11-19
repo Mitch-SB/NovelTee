@@ -72,24 +72,54 @@ namespace NovelTee.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateProduct(ProductFormViewModel newProduct)
+        public ActionResult Save(Product product)
         {
-            //Get File Name
-            var fileName = Path.GetFileNameWithoutExtension(newProduct.ImageFile.FileName);
-            //Get File Extension
-            var fileExtension = Path.GetExtension(newProduct.ImageFile.FileName);
-            //Add Current Date to Attached File Name
-            fileName = DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + fileName.Trim() + fileExtension;
-            //Get Upload path from Web.Config file AppSettings
-            string uploadPath = ConfigurationManager.AppSettings["UserImagePath"].ToString();
-            //Create complete path to store in server
-            newProduct.Product.ImagePath = uploadPath + fileName;
-            //Copy and Save File into server
-            newProduct.ImageFile.SaveAs(Server.MapPath(Path.Combine(uploadPath, fileName)));
+            //var viewModel = new ProductFormViewModel
+            //{
+            //    Product = product,
+            //    Category = _context.Categories.ToList()
+            //};
 
-            _context.Products.Add(newProduct.Product);
+            if (product.Id == 0)
+            {               
+                //Get File Name
+                var fileName = Path.GetFileNameWithoutExtension(product.ImageFile.FileName);
+                //Get File Extension
+                var fileExtension = Path.GetExtension(product.ImageFile.FileName);
+                //Add Current Date to Attached File Name
+                fileName = DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + fileName.Trim() + fileExtension;
+                //Get Upload path from Web.Config file AppSettings
+                string uploadPath = ConfigurationManager.AppSettings["UserImagePath"].ToString();
+                //Create complete path to store in server
+                product.ImagePath = uploadPath + fileName;
+                //Copy and Save File into server
+                product.ImageFile.SaveAs(Server.MapPath(Path.Combine(uploadPath, fileName)));
+
+                _context.Products.Add(product);
+
+            }
+            else
+            {
+                var productInDb = _context.Products.Single(p => p.Id == product.Id);
+
+                productInDb.Name = product.Name;
+                productInDb.Description = product.Description;
+                productInDb.Price = product.Price;
+                productInDb.CategoryID = product.CategoryID;
+
+                //Get File Name
+                var fileName = Path.GetFileNameWithoutExtension(product.ImageFile.FileName);
+                //Get File Extension
+                var fileExtension = Path.GetExtension(product.ImageFile.FileName);
+                //Add Current Date to Attached File Name
+                fileName = DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + fileName.Trim() + fileExtension;
+                //Get Upload path from Web.Config file AppSettings
+                string uploadPath = ConfigurationManager.AppSettings["UserImagePath"].ToString();
+
+                productInDb.ImagePath = uploadPath + fileName;
+                product.ImageFile.SaveAs(Server.MapPath(Path.Combine(uploadPath, fileName)));
+            }
             _context.SaveChanges();
-
             return RedirectToAction("Index", "Products");
         }
         
@@ -102,7 +132,25 @@ namespace NovelTee.Controllers
                 Category = categories
 
             };
-            
+            ViewData["Title"] = "New";
+
+            return View("New", viewModel);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var product = _context.Products.SingleOrDefault(p => p.Id == id);
+
+            if (product == null)
+                return HttpNotFound();
+
+            var viewModel = new ProductFormViewModel
+            {
+                Product = product,
+                Category = _context.Categories.ToList()
+            };
+            ViewData["Title"] = "Edit";
+
             return View("New", viewModel);
         }
 
