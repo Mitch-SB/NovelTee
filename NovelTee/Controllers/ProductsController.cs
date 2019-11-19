@@ -74,11 +74,20 @@ namespace NovelTee.Controllers
         [HttpPost]
         public ActionResult Save(Product product)
         {
-            //var viewModel = new ProductFormViewModel
-            //{
-            //    Product = product,
-            //    Category = _context.Categories.ToList()
-            //};
+            ////var viewModel = new ProductFormViewModel
+            ////{
+            ////    Product = product,
+            ////    Category = _context.Categories.ToList()
+            ////};
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new ProductFormViewModel
+                {
+                    Product = product,
+                    Category = _context.Categories.ToList()
+                };
+                return View("New", viewModel);
+            }
 
             if (product.Id == 0)
             {               

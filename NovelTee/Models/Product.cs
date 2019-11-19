@@ -15,12 +15,15 @@ namespace NovelTee.Models
         [StringLength(100)]
         public string Name { get; set; }
 
+        [Required]
         public string Description { get; set; }
 
+        [Required]
         public decimal Price { get; set; }
 
         public Category Category { get; set; }
         [Display(Name = "Category")]
+        [Required]
         public byte CategoryID { get; set; }
 
         [Display(Name = "Upload File")]

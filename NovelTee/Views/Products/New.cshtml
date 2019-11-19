@@ -30,26 +30,30 @@
                 -->
             @using (Html.BeginForm("Save", "Products", FormMethod.Post, new { enctype = "multipart/form-data"}))
             {
-
+                @Html.ValidationSummary(true, "Please fix the following errors.")
                 <div class="form-group">
                     @Html.LabelFor(p => p.Product.Name)
-                    @Html.TextBoxFor(p => p.Product.Name)
+                    @Html.TextBoxFor(p => p.Product.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.Product.Name)
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(p => p.Product.Description)
-                    @Html.TextBoxFor(p => p.Product.Description)
+                    @Html.TextBoxFor(p => p.Product.Description, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.Product.Description)
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(p => p.Product.Price)
-                    @Html.TextBoxFor(p => p.Product.Price)
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(p => p.Product.ImagePath)
-                    <input type="file" name="Product.ImageFile" required />
+                    @Html.TextBoxFor(p => p.Product.Price, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.Product.Price)
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(p => p.Product.CategoryID)
                     @Html.DropDownListFor(p => p.Product.CategoryID, new SelectList(Model.Category, "Id", "Cat_Name"), "Select Category", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.Product.CategoryID)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.Product.ImagePath)
+                    <input type="file" name="Product.ImageFile" class="input-group" required />
                 </div>
                 @Html.HiddenFor(p => p.Product.Id)
                 <!--Quantity-->
