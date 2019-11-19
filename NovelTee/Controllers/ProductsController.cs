@@ -72,7 +72,7 @@ namespace NovelTee.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateProduct(NewProductFormViewModel newProduct)
+        public ActionResult CreateProduct(ProductFormViewModel newProduct)
         {
             //Get File Name
             var fileName = Path.GetFileNameWithoutExtension(newProduct.ImageFile.FileName);
@@ -96,7 +96,7 @@ namespace NovelTee.Controllers
         public ActionResult New()
         {
             var categories = _context.Categories.ToList();
-            var viewModel = new NewProductFormViewModel
+            var viewModel = new ProductFormViewModel
             {
                 Product = new Product(),
                 Category = categories
