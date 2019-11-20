@@ -285,3 +285,11 @@ C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrat
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.TestMigration.resources
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.AddAnnotationsToProduct.resources
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.AddDataAnnotationsToTeeVariant.resources
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.AddShoppingCart.resources
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.AddCartItems.resources
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\bin\System.Net.Http.Formatting.dll
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\bin\System.Web.Http.dll
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\bin\System.Web.Http.WebHost.dll
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\bin\System.Net.Http.Formatting.xml
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\bin\System.Web.Http.xml
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\bin\System.Web.Http.WebHost.xml
