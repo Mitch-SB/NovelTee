@@ -6,6 +6,8 @@ using System.Net.Http;
 using System.Web.Http;
 using NovelTee.Models;
 using System.ComponentModel.DataAnnotations;
+using NovelTee.Dtos;
+using AutoMapper;
 
 namespace NovelTee.Controllers.Api
 {
@@ -19,50 +21,49 @@ namespace NovelTee.Controllers.Api
         }
 
         //GET /api/products
-        public IEnumerable<Product> GetProducts()
+        public IEnumerable<ProductDto> GetProducts()
         {
-            return _context.Products.ToList();
+            return _context.Products.ToList().Select(Mapper.Map<Product, ProductDto>);
         }
 
         //GET /api/products/1
-        public Product GetProduct(int id)
+        public ProductDto GetProduct(int id)
         {
             var product = _context.Products.SingleOrDefault(p => p.Id == id);
 
             if (product == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
-            return product;
+            return Mapper.Map<Product, ProductDto>(product);
         }
 
         //POST /api/products
         [HttpPost]
-        public Product CreateProduct(Product product)
+        public ProductDto CreateProduct(ProductDto productDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
+            var product = Mapper.Map<ProductDto, Product>(productDto);
             _context.Products.Add(product);
             _context.SaveChanges();
 
-            return product;
+            productDto.Id = product.Id;
+
+            return productDto;
             //NEEDS MORE for images
         }
 
         //PUT /api/products/1
         [HttpPut]
-        public void UpdateProduct(int id, Product product)
+        public void UpdateProduct(int id, ProductDto productDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             var productInDb = _context.Products.SingleOrDefault(p => p.Id == id);
             if (productInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
-            productInDb.Name = product.Name;
-            productInDb.Description = product.Description;
-            productInDb.CategoryID = product.CategoryID;
-            productInDb.ImageFile = product.ImageFile;
-            productInDb.ImagePath = product.ImagePath;
-            productInDb.Price = product.Price;
+
+            Mapper.Map(productDto, productInDb);
 
             _context.SaveChanges();
         }

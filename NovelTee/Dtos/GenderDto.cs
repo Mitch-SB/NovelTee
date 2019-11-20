@@ -7,5 +7,7 @@ namespace NovelTee.Dtos
 {
     public class GenderDto
     {
+        public byte Id { get; set; }
+        public string Name { get; set; }
     }
 }
