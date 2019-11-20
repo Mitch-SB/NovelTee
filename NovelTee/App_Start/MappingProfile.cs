@@ -13,7 +13,8 @@ namespace NovelTee.App_Start
         public MappingProfile()
         {
             Mapper.CreateMap<Product, ProductDto>();
-            Mapper.CreateMap<ProductDto, Product>();
+            Mapper.CreateMap<ProductDto, Product>()
+                .ForMember(p => p.Id, opt => opt.Ignore());
             Mapper.CreateMap<TeeVariant, TeeVariantDto>();
             Mapper.CreateMap<Color, ColorDto>();
             Mapper.CreateMap<Size, SizeDto>();

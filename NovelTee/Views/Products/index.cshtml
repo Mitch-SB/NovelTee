@@ -27,37 +27,50 @@
                     @:<div class="row">
                 }
 
-        <div class="col-md-4">
-            <div class="img-thumbnail">
+                <div id="product" class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="img-thumbnail">
                 
-                @if (product.ImagePath == null)
-                {
-                    <a href='@Url.Action("Product", "Products", new { id = product.Id }, null)'>
-                        <img src='@Url.Content("~/content/Images/NovelTee.png")' alt="Default" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;" />
-                    </a>
-                }
-                else
-                {
-                    <a href='@Url.Action("Product", "Products", new { id = product.Id}, null)'>
-                        <img src='@Url.Content(product.ImagePath)' alt="DbGood" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;" />
-                    </a>
-                }
+                        <a href='@Url.Action("Product", "Products", new { id = product.Id}, null)'>
+                            <img src='@Url.Content(product.ImagePath)' alt="DbGood" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;" />
+                        </a>                
                 
-                
-                <div class="caption">
-                    <h4>@Html.ActionLink(product.Name, "Product", "Products", new { id = product.Id }, null)</h4>
-                    <p>@product.Price</p>
-                    <p>@product.Description</p>
-                    <p>@Html.ActionLink("Edit", "Edit", "Products", new { id = product.Id }, null)</p>
-</div>
-            </div>
-        </div>
+                        <div class="caption">
+                            <h4>@Html.ActionLink(product.Name, "Product", "Products", new { id = product.Id }, null)</h4>
+                            <p>@product.Price</p>
+                            <p>@product.Description</p>
+                            <p>@Html.ActionLink("Edit", "Edit", "Products", new { id = product.Id }, null)</p>
+                            <button data-product-id="@product.Id" class="btn-link js-delete">Delete</button>
+                        </div>
+                    </div>
+                </div>
 
-        counter++;
+            counter++;
             }
         
         </div>
     </section>
 </div>
 <!--End TODO-->
+<!--TODO on delete, cascade elements into proper row positions-->
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#product .js-delete").on("click", function () {
+                var button = $(this);
 
+                if (confirm("Are you sure you want to delete this product?")) {
+                    $.ajax({
+                        url: "/api/products/" + $(this).attr("data-product-id"),
+                        method: "DELETE",
+                        success: function () {
+                            button.closest("div#product").remove();
+                        }
+                    });
+                }
+
+            });
+
+        });
+    </script>
+}

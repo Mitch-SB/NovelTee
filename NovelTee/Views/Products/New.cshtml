@@ -58,7 +58,7 @@
                 @Html.HiddenFor(p => p.Product.Id, new { @Value = Model.Product == null ? 0 : Model.Product.Id})
                 @Html.AntiForgeryToken()
                 <!--Quantity-->
-                <button type="submit" class="btn btn-primary">Add New Product</button>
+                <button type="submit" class="btn btn-primary">@ViewBag.Title Product</button>
             }
         </div>
     </div>

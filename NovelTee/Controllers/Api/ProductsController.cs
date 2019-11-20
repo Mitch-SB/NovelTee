@@ -27,21 +27,21 @@ namespace NovelTee.Controllers.Api
         }
 
         //GET /api/products/1
-        public ProductDto GetProduct(int id)
+        public IHttpActionResult GetProduct(int id)
         {
             var product = _context.Products.SingleOrDefault(p => p.Id == id);
 
             if (product == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
-            return Mapper.Map<Product, ProductDto>(product);
+                return NotFound();
+            return Ok(Mapper.Map<Product, ProductDto>(product));
         }
 
         //POST /api/products
         [HttpPost]
-        public ProductDto CreateProduct(ProductDto productDto)
+        public IHttpActionResult CreateProduct(ProductDto productDto)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
 
             var product = Mapper.Map<ProductDto, Product>(productDto);
             _context.Products.Add(product);
@@ -49,7 +49,7 @@ namespace NovelTee.Controllers.Api
 
             productDto.Id = product.Id;
 
-            return productDto;
+            return Created(new Uri(Request.RequestUri + "/" + product.Id), productDto);
             //NEEDS MORE for images
         }
 
