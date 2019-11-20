@@ -72,13 +72,9 @@ namespace NovelTee.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Product product)
         {
-            ////var viewModel = new ProductFormViewModel
-            ////{
-            ////    Product = product,
-            ////    Category = _context.Categories.ToList()
-            ////};
             if (!ModelState.IsValid)
             {
                 var viewModel = new ProductFormViewModel
@@ -163,11 +159,19 @@ namespace NovelTee.Controllers
             return View("New", viewModel);
         }
 
-        public ActionResult AddToCart(ProductFormViewModel viewModel)
+        [HttpPost]
+        public ActionResult AddToCart(Product product)
         {
-            //_context.Tees.
-
-            return View(viewModel);
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new ProductFormViewModel
+                {
+                    Product = product,
+                    TeeVariant = new TeeVariant()
+                };
+                return View("ProductForm", viewModel);
+            }
+            return View();
         }
         
         

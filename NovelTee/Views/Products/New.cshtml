@@ -55,7 +55,8 @@
                     @Html.LabelFor(p => p.Product.ImagePath)
                     <input type="file" name="Product.ImageFile" class="input-group" required />
                 </div>
-                @Html.HiddenFor(p => p.Product.Id)
+                @Html.HiddenFor(p => p.Product.Id, new { @Value = Model.Product == null ? 0 : Model.Product.Id})
+                @Html.AntiForgeryToken()
                 <!--Quantity-->
                 <button type="submit" class="btn btn-primary">Add New Product</button>
             }

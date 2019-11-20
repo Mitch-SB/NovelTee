@@ -41,12 +41,13 @@
             <!--
                 Tee variant => Future Order
                 -->
-            @using (Html.BeginForm("AddToCart", "Products"))
+            @using (Html.BeginForm("AddToCart", "Products", FormMethod.Post))
             {
-
+                @Html.ValidationSummary()
                 <div class="form-group">
                     @Html.LabelFor(t => t.TeeVariant.ColorId)
                     @Html.DropDownListFor(t => t.TeeVariant.ColorId, new SelectList(Model.Color, "Id", "Name"), "Select Color", new { @class = "form-control" })
+                    
                     <!--TODO Validate-->
                 </div>
                 <div class="form-group">
@@ -58,10 +59,14 @@
                     @Html.DropDownListFor(t => t.TeeVariant.SizeId, new SelectList(Model.Size, "Id", "Name"), "Select Size", new { @class = "form-control" })
                 </div>
                 <!--Quantity-->
+                @Html.HiddenFor(t => t.Product.Id)
+                @Html.HiddenFor(t => t.TeeVariant.Id)
                 <button type="submit" class="btn btn-primary">Add to Cart</button>
             }
         </div>
     </div>
-    
-
 </div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

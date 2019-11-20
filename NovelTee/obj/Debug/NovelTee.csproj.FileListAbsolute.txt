@@ -284,3 +284,4 @@ C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrat
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.DeleteImagesModel.resources
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.TestMigration.resources
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.AddAnnotationsToProduct.resources
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.AddDataAnnotationsToTeeVariant.resources
