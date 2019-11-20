@@ -35,6 +35,12 @@ namespace NovelTee.Controllers
             return View(product);
         }
 
+        public ViewResult ManageProduct() {
+            var product = _context.Products.ToList();
+
+            return View(product);
+        }
+
         public ActionResult Details(int id)
         {
             var product = _context.Products.SingleOrDefault(t => t.Id == id);
@@ -112,17 +118,21 @@ namespace NovelTee.Controllers
                 productInDb.Price = product.Price;
                 productInDb.CategoryID = product.CategoryID;
 
-                //Get File Name
-                var fileName = Path.GetFileNameWithoutExtension(product.ImageFile.FileName);
-                //Get File Extension
-                var fileExtension = Path.GetExtension(product.ImageFile.FileName);
-                //Add Current Date to Attached File Name
-                fileName = DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + fileName.Trim() + fileExtension;
-                //Get Upload path from Web.Config file AppSettings
-                string uploadPath = ConfigurationManager.AppSettings["UserImagePath"].ToString();
+                if(product.ImageFile != null)
+                {
+                    //Get File Name
+                    var fileName = Path.GetFileNameWithoutExtension(product.ImageFile.FileName);
+                    //Get File Extension
+                    var fileExtension = Path.GetExtension(product.ImageFile.FileName);
+                    //Add Current Date to Attached File Name
+                    fileName = DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + fileName.Trim() + fileExtension;
+                    //Get Upload path from Web.Config file AppSettings
+                    string uploadPath = ConfigurationManager.AppSettings["UserImagePath"].ToString();
 
-                productInDb.ImagePath = uploadPath + fileName;
-                product.ImageFile.SaveAs(Server.MapPath(Path.Combine(uploadPath, fileName)));
+                    productInDb.ImagePath = uploadPath + fileName;
+                    product.ImageFile.SaveAs(Server.MapPath(Path.Combine(uploadPath, fileName)));
+                }
+                
             }
             _context.SaveChanges();
             return RedirectToAction("Index", "Products");

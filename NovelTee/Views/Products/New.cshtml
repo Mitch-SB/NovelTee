@@ -15,12 +15,14 @@
         <div class="img-preview">
             <div>
                 <!--Image Upload-->
+                <img src='@Url.Content(Model.Product.ImagePath)' alt="DbGood" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;" />
             </div>
         </div>
         <div>
             <div>
                 <!--Description-->
                 <p class="options">
+                    @Model.Product.Description
                 </p>
             </div>
         </div>
@@ -53,7 +55,20 @@
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(p => p.Product.ImagePath)
-                    <input type="file" name="Product.ImageFile" class="input-group" required />
+
+                    @{
+                        if (ViewBag.Title == "Edit")
+                        {
+                            <input type="file" name="Product.ImageFile" class="input-group" />
+                        }
+                        else
+                        {
+                            <input type="file" name="Product.ImageFile" class="input-group" required />
+                        }
+
+                    }
+
+                    
                 </div>
                 @Html.HiddenFor(p => p.Product.Id, new { @Value = Model.Product == null ? 0 : Model.Product.Id})
                 @Html.AntiForgeryToken()

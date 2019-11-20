@@ -46,8 +46,23 @@
 
             counter++;
             }
-        
         </div>
+
+        <table class="container">
+            <thead>
+                <tr>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+                </tr>
+            </tbody>
+        </table>
+
     </section>
 </div>
 <!--End TODO-->
@@ -56,6 +71,8 @@
 {
     <script>
         $(document).ready(function () {
+            $("#products").DataTable();
+
             $("#products").on("click", ".js-delete", function () {
                 var button = $(this);
 

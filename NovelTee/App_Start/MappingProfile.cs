@@ -19,7 +19,7 @@ namespace NovelTee.App_Start
             Mapper.CreateMap<Color, ColorDto>();
             Mapper.CreateMap<Size, SizeDto>();
             Mapper.CreateMap<Gender, GenderDto>();
-
+            Mapper.CreateMap<Category, CategoryDto>();
 
         }
     }

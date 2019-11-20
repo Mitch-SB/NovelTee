@@ -8,6 +8,7 @@ using NovelTee.Models;
 using System.ComponentModel.DataAnnotations;
 using NovelTee.Dtos;
 using AutoMapper;
+using System.Data.Entity;
 
 namespace NovelTee.Controllers.Api
 {
@@ -23,7 +24,11 @@ namespace NovelTee.Controllers.Api
         //GET /api/products
         public IEnumerable<ProductDto> GetProducts()
         {
-            return _context.Products.ToList().Select(Mapper.Map<Product, ProductDto>);
+
+            return _context.Products
+                .Include(p => p.Category)
+                .ToList()
+                .Select(Mapper.Map<Product, ProductDto>);
         }
 
         //GET /api/products/1

@@ -22,7 +22,9 @@ namespace NovelTee.Dtos
         
         [Required]
         public byte CategoryID { get; set; }
-        
+
+        public CategoryDto Category { get; set; }
+
         public String ImagePath { get; set; }
         
         public HttpPostedFileBase ImageFile { get; set; }
