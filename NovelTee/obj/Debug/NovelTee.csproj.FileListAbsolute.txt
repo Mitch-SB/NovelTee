@@ -295,3 +295,7 @@ C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\bin\System.Web.Http.xml
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\bin\System.Web.Http.WebHost.xml
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\bin\AutoMapper.dll
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\bin\AutoMapper.xml
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\bin\PagedList.dll
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\bin\PagedList.Mvc.dll
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\bin\PagedList.xml
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\bin\PagedList.Mvc.xml

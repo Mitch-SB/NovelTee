@@ -1,10 +1,14 @@
-﻿@model IEnumerable<NovelTee.Models.Product>
+﻿@model IPagedList<NovelTee.Models.Product>
 
 @{
     ViewBag.Title = ViewData["Title"];
     Layout = "~/Views/Shared/_Layout.cshtml";
     int counter = 0;
 }
+
+@using PagedList.Mvc;
+@using PagedList;
+
 
 <h2>@ViewBag.Title</h2>
 
@@ -38,8 +42,8 @@
                             <h4>@Html.ActionLink(product.Name, "Product", "Products", new { id = product.Id }, null)</h4>
                             <p>@product.Description</p>
                             <p>@product.Price</p>
-                            <p>@Html.ActionLink("Edit", "Edit", "Products", new { id = product.Id }, null)</p>
-                            <button data-product-id="@product.Id" class="btn-link js-delete">Delete</button>
+                            @*<p>@Html.ActionLink("Edit", "Edit", "Products", new { id = product.Id }, null)</p>
+                            <button data-product-id="@product.Id" class="btn-link js-delete">Delete</button>*@
                         </div>
                     </div>
                 </div>
@@ -47,27 +51,13 @@
             counter++;
             }
         </div>
-
-        <table class="container">
-            <thead>
-                <tr>
-                    <th>
-
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-
-                </tr>
-            </tbody>
-        </table>
-
+        @Html.PagedListPager(Model, i => Url.Action(ViewBag.Title, "Products", new { i, search = Request.QueryString["search"] }))
     </section>
 </div>
+
 <!--End TODO-->
 <!--TODO on delete, cascade elements into proper row positions-->
-@section scripts
+@*@section scripts
 {
     <script>
         $(document).ready(function () {
@@ -90,4 +80,4 @@
 
         });
     </script>
-}
+}*@

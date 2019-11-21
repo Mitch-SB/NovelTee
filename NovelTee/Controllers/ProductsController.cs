@@ -8,6 +8,7 @@ using NovelTee.ViewModels;
 using System.Data.Entity;
 using System.IO;
 using System.Configuration;
+using PagedList;
 
 namespace NovelTee.Controllers
 {
@@ -26,14 +27,14 @@ namespace NovelTee.Controllers
         }
 
         // GET: Tees
-        public ViewResult Index()
+        public ViewResult Index(string search,int? i)
         {
             //var tees = GetTees();
             //var product = _context.Products.Include(t => t.Image).ToList();
             var product = _context.Products.ToList();
             ViewData["Title"] = "Index";
 
-            return View(product);
+            return View(product.ToPagedList(i ?? 1,6));
         }
 
         public ViewResult ManageProduct() {
@@ -78,25 +79,25 @@ namespace NovelTee.Controllers
             return View("ProductForm", viewModel);
         }
 
-        public ActionResult Tees()
+        public ActionResult Tees(string search, int? i)
         {
             var product = _context.Products.Include(p => p.Category).ToList().Where(p => p.CategoryID == Category.Tees);
             ViewData["Title"] = "Tees";
-            return View("Index", product);
+            return View("Index", product.ToPagedList(i ?? 1, 6));
         }
 
-        public ActionResult Tanks()
+        public ActionResult Tanks(string search, int? i)
         {
             var product = _context.Products.Include(p => p.Category).ToList().Where(p => p.CategoryID == Category.Tanks);
             ViewData["Title"] = "Tanks";
-            return View("Index", product);
+            return View("Index", product.ToPagedList(i ?? 1, 6));
         }
 
-        public ActionResult Hoodies()
+        public ActionResult Hoodies(string search, int? i)
         {
             var product = _context.Products.Include(p => p.Category).ToList().Where(p => p.CategoryID == Category.Hoods);
             ViewData["Title"] = "Hoodies";
-            return View("Index", product);
+            return View("Index", product.ToPagedList(i ?? 1, 6));
         }
 
         [HttpPost]
