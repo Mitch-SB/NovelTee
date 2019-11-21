@@ -19,13 +19,20 @@
         </form>
 
         <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("Tees", "Index", "Products")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-            </ul>
             @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+    <div class="container">
+        
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav sub-nav">
+                <li>@Html.ActionLink("Browse", "Index", "Products")</li> 
+                <li>|</li>
+                <li>@Html.ActionLink("Tees", "Tees", "Products")</li>
+                <li>@Html.ActionLink("Tank Tees", "Tanks", "Products")</li>
+                <li>@Html.ActionLink("Hood Tees", "Hoodies", "Products")</li>
+            </ul>
         </div>
     </div>
 </div>

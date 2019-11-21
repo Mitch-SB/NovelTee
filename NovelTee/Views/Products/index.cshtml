@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<NovelTee.Models.Product>
 
 @{
-    ViewBag.Title = "Products";
+    ViewBag.Title = ViewData["Title"];
     Layout = "~/Views/Shared/_Layout.cshtml";
     int counter = 0;
 }
 
-<h2>Products</h2>
+<h2>@ViewBag.Title</h2>
 
 <!--TODO-->
 <div class="body-content">
@@ -36,8 +36,8 @@
                 
                         <div class="caption">
                             <h4>@Html.ActionLink(product.Name, "Product", "Products", new { id = product.Id }, null)</h4>
-                            <p>@product.Price</p>
                             <p>@product.Description</p>
+                            <p>@product.Price</p>
                             <p>@Html.ActionLink("Edit", "Edit", "Products", new { id = product.Id }, null)</p>
                             <button data-product-id="@product.Id" class="btn-link js-delete">Delete</button>
                         </div>
@@ -71,8 +71,6 @@
 {
     <script>
         $(document).ready(function () {
-            $("#products").DataTable();
-
             $("#products").on("click", ".js-delete", function () {
                 var button = $(this);
 

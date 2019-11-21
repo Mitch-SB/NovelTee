@@ -31,6 +31,7 @@ namespace NovelTee.Controllers
             //var tees = GetTees();
             //var product = _context.Products.Include(t => t.Image).ToList();
             var product = _context.Products.ToList();
+            ViewData["Title"] = "Index";
 
             return View(product);
         }
@@ -75,6 +76,27 @@ namespace NovelTee.Controllers
             ViewData["Title"] = "Product";
 
             return View("ProductForm", viewModel);
+        }
+
+        public ActionResult Tees()
+        {
+            var product = _context.Products.Include(p => p.Category).ToList().Where(p => p.CategoryID == Category.Tees);
+            ViewData["Title"] = "Tees";
+            return View("Index", product);
+        }
+
+        public ActionResult Tanks()
+        {
+            var product = _context.Products.Include(p => p.Category).ToList().Where(p => p.CategoryID == Category.Tanks);
+            ViewData["Title"] = "Tanks";
+            return View("Index", product);
+        }
+
+        public ActionResult Hoodies()
+        {
+            var product = _context.Products.Include(p => p.Category).ToList().Where(p => p.CategoryID == Category.Hoods);
+            ViewData["Title"] = "Hoodies";
+            return View("Index", product);
         }
 
         [HttpPost]
