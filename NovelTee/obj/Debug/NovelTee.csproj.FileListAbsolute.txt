@@ -299,3 +299,7 @@ C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\bin\PagedList.dll
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\bin\PagedList.Mvc.dll
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\bin\PagedList.xml
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\bin\PagedList.Mvc.xml
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.RemoveUserModelAndAddCustomerModel.resources
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.DeleteUserIdFromShoppingCart.resources
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.AddCustomerIdToShoppingCart.resources
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.SeedUsers.resources

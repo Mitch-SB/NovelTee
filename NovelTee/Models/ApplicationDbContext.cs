@@ -10,18 +10,8 @@ namespace NovelTee.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        private DbSet<User> users;
-
-        public DbSet<User> GetUsers()
-        {
-            return users;
-        }
-
-        public void SetUsers(DbSet<User> value)
-        {
-            users = value;
-        }
-
+        
+        public DbSet<Customer> Customers { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         

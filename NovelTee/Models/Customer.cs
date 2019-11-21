@@ -5,7 +5,7 @@ using System.Web;
 
 namespace NovelTee.Models
 {
-    public class User
+    public class Customer
     {
         public int Id { get; set; }
         public string UserName { get; set; }
@@ -16,6 +16,5 @@ namespace NovelTee.Models
         public string LastName { get; set; }
         public string Address { get; set; }
         public DateTime Created { get; set; }
-
     }
 }

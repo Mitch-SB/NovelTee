@@ -8,8 +8,8 @@ namespace NovelTee.Models
     public class ShoppingCart
     {
         public int Id { get; set; }
-        public User User { get; set; }
-        public int UserId { get; set; }
+        public Customer Customer { get; set; }
+        public int CustomerId { get; set; }
         public DateTime CreatedDate { get; set; }
     }
 }
