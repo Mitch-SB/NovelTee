@@ -29,14 +29,17 @@ namespace NovelTee.Controllers
         // GET: Tees
         public ViewResult Index(string search,int? i)
         {
-            //var tees = GetTees();
-            //var product = _context.Products.Include(t => t.Image).ToList();
+            if (User.IsInRole("CanManageProducts"))
+            {
+                return View("ManageProduct");
+            }                
+
             var product = _context.Products.ToList();
             ViewData["Title"] = "Index";
 
             return View(product.ToPagedList(i ?? 1,6));
         }
-
+                
         public ViewResult ManageProduct() {
             var product = _context.Products.ToList();
 
@@ -161,6 +164,7 @@ namespace NovelTee.Controllers
             return RedirectToAction("Index", "Products");
         }
         
+        [Authorize(Roles = RoleName.CanManageProducts)]
         public ActionResult New()
         {
             var categories = _context.Categories.ToList();
@@ -175,6 +179,7 @@ namespace NovelTee.Controllers
             return View("New", viewModel);
         }
 
+        [Authorize(Roles = RoleName.CanManageProducts)]
         public ActionResult Edit(int id)
         {
             var product = _context.Products.SingleOrDefault(p => p.Id == id);

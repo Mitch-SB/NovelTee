@@ -11,14 +11,15 @@
             </a>
         </div>
 
-        <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-        </form>
+        
 
         <div class="navbar-collapse collapse">
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
             @Html.Partial("_LoginPartial")
         </div>
     </div>
@@ -27,8 +28,14 @@
 
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav sub-nav">
-                <li>@Html.ActionLink("Browse", "Index", "Products")</li> 
-                <li>|</li>
+                <li>
+                    @if (User.IsInRole("CanManageProducts"))
+                    {
+                        @Html.ActionLink("Manage", "Index", "Products")
+                    } else {
+                        @Html.ActionLink("Browse", "Index", "Products")
+                    }
+                </li> 
                 <li>@Html.ActionLink("Tees", "Tees", "Products")</li>
                 <li>@Html.ActionLink("Tank Tees", "Tanks", "Products")</li>
                 <li>@Html.ActionLink("Hood Tees", "Hoodies", "Products")</li>

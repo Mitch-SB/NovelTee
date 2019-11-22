@@ -372,6 +372,7 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\Size.cs" />
     <Compile Include="Models\TeeVariant.cs" />

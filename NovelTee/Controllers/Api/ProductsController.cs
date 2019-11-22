@@ -43,6 +43,7 @@ namespace NovelTee.Controllers.Api
 
         //POST /api/products
         [HttpPost]
+        [Authorize(Roles = RoleName.CanManageProducts)]
         public IHttpActionResult CreateProduct(ProductDto productDto)
         {
             if (!ModelState.IsValid)
@@ -60,6 +61,7 @@ namespace NovelTee.Controllers.Api
 
         //PUT /api/products/1
         [HttpPut]
+        [Authorize(Roles = RoleName.CanManageProducts)]
         public void UpdateProduct(int id, ProductDto productDto)
         {
             if (!ModelState.IsValid)
@@ -75,6 +77,7 @@ namespace NovelTee.Controllers.Api
 
         //DELETE /api/products/1
         [HttpDelete]
+        [Authorize(Roles = RoleName.CanManageProducts)]
         public void DeleteProduct(int id)
         {
             var productInDb = _context.Products.SingleOrDefault(p => p.Id == id);

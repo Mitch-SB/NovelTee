@@ -48,7 +48,10 @@
                         data: "category.cat_Name"
                     },
                     {
-                        data: "imagePath"
+                        data: "imagePath",
+                        render: function (data, type, product) {
+                            return "<img src='" + data.replace('~', '') + "' style='height: 100px; width: 100px; display: block;' />";
+                        }
                     },
                     {
                         data: "id",
