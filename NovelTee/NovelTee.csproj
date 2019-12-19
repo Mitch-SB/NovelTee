@@ -211,6 +211,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\ProductsController.cs" />
+    <Compile Include="Controllers\CartsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -363,6 +364,30 @@
     <Compile Include="Migrations\201911210524498_SeedUsers.Designer.cs">
       <DependentUpon>201911210524498_SeedUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911260320073_UpdateShoppingCart.cs" />
+    <Compile Include="Migrations\201911260320073_UpdateShoppingCart.Designer.cs">
+      <DependentUpon>201911260320073_UpdateShoppingCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911260329526_RemoveApplicationUserFromShoppingCart.cs" />
+    <Compile Include="Migrations\201911260329526_RemoveApplicationUserFromShoppingCart.Designer.cs">
+      <DependentUpon>201911260329526_RemoveApplicationUserFromShoppingCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911260331219_AddApplicationUserToShoppingCart.cs" />
+    <Compile Include="Migrations\201911260331219_AddApplicationUserToShoppingCart.Designer.cs">
+      <DependentUpon>201911260331219_AddApplicationUserToShoppingCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911260404526_RemoveApplicationUserFromShoppingCart2.cs" />
+    <Compile Include="Migrations\201911260404526_RemoveApplicationUserFromShoppingCart2.Designer.cs">
+      <DependentUpon>201911260404526_RemoveApplicationUserFromShoppingCart2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911260406563_AddApplicationUserToShoppingCart3.cs" />
+    <Compile Include="Migrations\201911260406563_AddApplicationUserToShoppingCart3.Designer.cs">
+      <DependentUpon>201911260406563_AddApplicationUserToShoppingCart3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912091748487_ModifyCartItemsToString.cs" />
+    <Compile Include="Migrations\201912091748487_ModifyCartItemsToString.Designer.cs">
+      <DependentUpon>201912091748487_ModifyCartItemsToString.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -380,6 +405,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\ProductFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -640,10 +666,10 @@
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Carts\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -763,6 +789,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911210524498_SeedUsers.resx">
       <DependentUpon>201911210524498_SeedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911260320073_UpdateShoppingCart.resx">
+      <DependentUpon>201911260320073_UpdateShoppingCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911260329526_RemoveApplicationUserFromShoppingCart.resx">
+      <DependentUpon>201911260329526_RemoveApplicationUserFromShoppingCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911260331219_AddApplicationUserToShoppingCart.resx">
+      <DependentUpon>201911260331219_AddApplicationUserToShoppingCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911260404526_RemoveApplicationUserFromShoppingCart2.resx">
+      <DependentUpon>201911260404526_RemoveApplicationUserFromShoppingCart2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911260406563_AddApplicationUserToShoppingCart3.resx">
+      <DependentUpon>201911260406563_AddApplicationUserToShoppingCart3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912091748487_ModifyCartItemsToString.resx">
+      <DependentUpon>201912091748487_ModifyCartItemsToString.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -303,3 +303,9 @@ C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrat
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.DeleteUserIdFromShoppingCart.resources
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.AddCustomerIdToShoppingCart.resources
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.SeedUsers.resources
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.UpdateShoppingCart.resources
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.RemoveApplicationUserFromShoppingCart.resources
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.AddApplicationUserToShoppingCart.resources
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.RemoveApplicationUserFromShoppingCart2.resources
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.AddApplicationUserToShoppingCart3.resources
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.ModifyCartItemsToString.resources

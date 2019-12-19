@@ -62,3 +62,18 @@ textarea {
 .sub-nav{
     font-size: 30px;
 }
+
+/*Cart Table*/
+
+.table h5{
+    font-weight: 600;
+}
+
+.table label{
+    margin: 0;
+}
+
+.cart-total{
+    text-align: end;
+    font-size: medium;
+}

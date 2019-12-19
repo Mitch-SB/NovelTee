@@ -9,7 +9,6 @@ namespace NovelTee.Models
     public class TeeVariant
     {
         public int Id { get; set; }
-
         
         public Color Color { get; set; }
         [Display(Name = "Color")]

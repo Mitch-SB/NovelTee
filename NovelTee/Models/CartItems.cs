@@ -13,7 +13,7 @@ namespace NovelTee.Models
         public TeeVariant TeeVariant { get; set; }
         public int TeeVariantId { get; set; }
         public ShoppingCart ShoppingCart { get; set; }
-        public int ShoppingCartId { get; set; }
+        public string ShoppingCartId { get; set; }
         public int Quantity { get; set; }
 
     }

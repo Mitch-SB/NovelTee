@@ -10,7 +10,7 @@
                 <img src='@Url.Content("~/Content/Images/NTLogo.png")' />
             </a>
         </div>
-
+@using NovelTee.Models;
         
 
         <div class="navbar-collapse collapse">
@@ -20,6 +20,32 @@
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        Cart (
+                        @{
+                            var cartLength = Session["cart"] as List<CartItems>;
+                            if (Session["cart"] != null)
+                            {
+                                @cartLength.Count;
+                            }
+                            else
+                            {
+                                <text>0</text>
+                            }
+                        }
+                        )
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            @Html.ActionLink("Index", "Carts", "Products")
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
             @Html.Partial("_LoginPartial")
         </div>
     </div>

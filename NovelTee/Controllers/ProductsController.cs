@@ -155,6 +155,10 @@ namespace NovelTee.Controllers
                     //Get Upload path from Web.Config file AppSettings
                     string uploadPath = ConfigurationManager.AppSettings["UserImagePath"].ToString();
 
+                    //Delete Image file in folder
+                    var filePath = Server.MapPath(productInDb.ImagePath);
+                    System.IO.File.Delete(filePath);
+
                     productInDb.ImagePath = uploadPath + fileName;
                     product.ImageFile.SaveAs(Server.MapPath(Path.Combine(uploadPath, fileName)));
                 }
@@ -197,21 +201,6 @@ namespace NovelTee.Controllers
             return View("New", viewModel);
         }
 
-        [HttpPost]
-        public ActionResult AddToCart(Product product)
-        {
-            if (!ModelState.IsValid)
-            {
-                var viewModel = new ProductFormViewModel
-                {
-                    Product = product,
-                    TeeVariant = new TeeVariant()
-                };
-                return View("ProductForm", viewModel);
-            }
-            return View();
-        }
-        
         
     }
 }
