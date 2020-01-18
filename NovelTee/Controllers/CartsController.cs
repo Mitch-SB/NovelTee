@@ -181,7 +181,11 @@ namespace NovelTee.Controllers
             List<CartItems> cart = (List<CartItems>)Session["cart"];
             int index = IsExist(prodId, varId);
             cart[index].Quantity = qty;
+            if(qty == 0)
+                cart.RemoveAt(index);
             Session["cart"] = cart;
+            if (cart.Count == 0)
+                Session["cart"] = null;
             return RedirectToAction("Index");
         }
     }
