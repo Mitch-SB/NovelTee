@@ -38,7 +38,7 @@ else
                                 <img src="@p.ImagePath.Replace("~", "")" width="150" />
                             </td>
                             <td>
-                                <h5>@p.Name</h5>
+                                <h5>@Html.ActionLink(p.Name, "Product", "Products", new { id = p.Id }, null)</h5>
 
                                 @foreach (TeeVariant t in Model.TeeVariant)
                                 {

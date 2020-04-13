@@ -23,24 +23,25 @@ namespace NovelTee.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            _context.Dispose();    
+            _context.Dispose();
         }
 
         // GET: Tees
-        public ViewResult Index(string search,int? i)
+        public ViewResult Index(string search, int? i)
         {
             if (User.IsInRole("CanManageProducts"))
             {
                 return View("ManageProduct");
-            }                
+            }
 
             var product = _context.Products.ToList();
             ViewData["Title"] = "Index";
 
-            return View(product.ToPagedList(i ?? 1,6));
+            return View(product.ToPagedList(i ?? 1, 6));
         }
-                
-        public ViewResult ManageProduct() {
+
+        public ViewResult ManageProduct()
+        {
             var product = _context.Products.ToList();
 
             return View(product);
@@ -59,7 +60,7 @@ namespace NovelTee.Controllers
                 Gender = _context.Genders.ToList(),
                 Size = _context.Sizes.ToList()
             };
-            
+
             return View("Details", viewModel);
         }
 
@@ -118,7 +119,7 @@ namespace NovelTee.Controllers
             }
 
             if (product.Id == 0)
-            {               
+            {
                 //Get File Name
                 var fileName = Path.GetFileNameWithoutExtension(product.ImageFile.FileName);
                 //Get File Extension
@@ -144,7 +145,7 @@ namespace NovelTee.Controllers
                 productInDb.Price = product.Price;
                 productInDb.CategoryID = product.CategoryID;
 
-                if(product.ImageFile != null)
+                if (product.ImageFile != null)
                 {
                     //Get File Name
                     var fileName = Path.GetFileNameWithoutExtension(product.ImageFile.FileName);
@@ -162,12 +163,12 @@ namespace NovelTee.Controllers
                     productInDb.ImagePath = uploadPath + fileName;
                     product.ImageFile.SaveAs(Server.MapPath(Path.Combine(uploadPath, fileName)));
                 }
-                
+
             }
             _context.SaveChanges();
             return RedirectToAction("Index", "Products");
         }
-        
+
         [Authorize(Roles = RoleName.CanManageProducts)]
         public ActionResult New()
         {
@@ -201,6 +202,14 @@ namespace NovelTee.Controllers
             return View("New", viewModel);
         }
 
-        
+        public ActionResult Search(string searchString, int? i)
+        {
+            var products = from m in _context.Products select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+                products = products.Where(p => p.Name.Contains(searchString));
+
+            return View("Index", products.OrderBy(p => p.Id).ToPagedList(i ?? 1, 6));
+        }
     }
 }

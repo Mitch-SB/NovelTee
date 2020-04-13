@@ -1,0 +1,38 @@
+﻿<div class="sidebar">
+    <h4>Filter by Product:</h4>
+    <ul class="nav nav-sidebar">
+        @{ 
+            <li>
+                @if ((String)ViewData["Title"] == "Tees")
+                {
+                    @Html.ActionLink("Tees", "Tees", "Products", new { @class = "active" });
+                }
+                else
+                {
+                    @Html.ActionLink("Tees", "Tees", "Products");
+                }
+            </li>
+            <li>
+                @if ((String)ViewData["Title"] == "Tanks")
+                {
+                    @Html.ActionLink("Tank Tees", "Tanks", "Products", new { @class = "active" });
+                }
+                else
+                {
+                    @Html.ActionLink("Tank Tees", "Tanks", "Products");
+                }
+            </li>
+            <li>
+                @if ((String)ViewData["Title"] == "Hoodies")
+                {
+                    @Html.ActionLink("Hood Tees", "Hoodies", "Products", new { @class = "active" });
+                }
+                else
+                {
+                    @Html.ActionLink("Hood Tees", "Hoodies", "Products");
+                }
+            </li>
+
+        }
+    </ul>
+</div>
