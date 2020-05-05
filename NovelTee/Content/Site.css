@@ -139,3 +139,19 @@ textarea {
     text-align: end;
     font-size: medium;
 }
+
+.checkout {
+    background: #efefef;
+    border-radius: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 40px;
+}
+
+.form-control{
+    max-width: 100%;
+}
+
+h3{
+    font-weight:600;
+}
