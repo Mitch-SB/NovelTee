@@ -17,7 +17,7 @@ namespace NovelTee.ViewModels
         public IEnumerable<Gender> Gender { get; set; }
         public IEnumerable<Size> Size { get; set; }
 
-        public CartItems CartItems { get; set; }
+        public CartItem CartItems { get; set; }
 
     }
 }

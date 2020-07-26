@@ -251,7 +251,6 @@ C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\bin\Microsoft.AI.Dependen
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\bin\Microsoft.AI.Web.xml
-C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.csprojResolveAssemblyReference.cache
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.InitialModel.resources
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.AddTee.resources
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.AddColor.resources
@@ -309,3 +308,8 @@ C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrat
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.RemoveApplicationUserFromShoppingCart2.resources
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.AddApplicationUserToShoppingCart3.resources
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.ModifyCartItemsToString.resources
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.UpdateCartItems.resources
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.csprojAssemblyReference.cache
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.csproj.CopyComplete
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.RemoveShoppingCartnCartItems.resources
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.ReAddCartItem.resources

@@ -389,10 +389,22 @@
     <Compile Include="Migrations\201912091748487_ModifyCartItemsToString.Designer.cs">
       <DependentUpon>201912091748487_ModifyCartItemsToString.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005050420022_UpdateCartItems.cs" />
+    <Compile Include="Migrations\202005050420022_UpdateCartItems.Designer.cs">
+      <DependentUpon>202005050420022_UpdateCartItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007260414374_RemoveShoppingCartnCartItems.cs" />
+    <Compile Include="Migrations\202007260414374_RemoveShoppingCartnCartItems.Designer.cs">
+      <DependentUpon>202007260414374_RemoveShoppingCartnCartItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007260422328_ReAddCartItem.cs" />
+    <Compile Include="Migrations\202007260422328_ReAddCartItem.Designer.cs">
+      <DependentUpon>202007260422328_ReAddCartItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\CartItems.cs" />
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Color.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -810,6 +822,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912091748487_ModifyCartItemsToString.resx">
       <DependentUpon>201912091748487_ModifyCartItemsToString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005050420022_UpdateCartItems.resx">
+      <DependentUpon>202005050420022_UpdateCartItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007260414374_RemoveShoppingCartnCartItems.resx">
+      <DependentUpon>202007260414374_RemoveShoppingCartnCartItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007260422328_ReAddCartItem.resx">
+      <DependentUpon>202007260422328_ReAddCartItem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

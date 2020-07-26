@@ -35,7 +35,7 @@ namespace NovelTee.Controllers
         }
         
         [HttpPost]
-        public ActionResult AddToCart(CartItems cartItems)
+        public ActionResult AddToCart(CartItem cartItems)
         {
             /*  TeeVariant.ColorId: 2
                 TeeVariant.GenderId: 1
@@ -95,7 +95,7 @@ namespace NovelTee.Controllers
             //Check if session with cart is empty
             if (Session["cart"] == null)
             {
-                List<CartItems> cart = new List<CartItems>();
+                List<CartItem> cart = new List<CartItem>();
 
                 var variant = _context.TeeVariants.ToList();
 
@@ -108,13 +108,13 @@ namespace NovelTee.Controllers
                     }
                 }
 
-                cart.Add(new CartItems
+                cart.Add(new CartItem
                 {
                     Product = cartItems.Product,
                     ProductId = cartItems.Product.Id,
                     TeeVariantId = cartItems.TeeVariantId,
                     TeeVariant = cartItems.TeeVariant,
-                    ShoppingCart = cartItems.ShoppingCart,
+                    //ShoppingCart = cartItems.ShoppingCart,
                     Quantity = 1
                 });
                 Session["cart"] = cart;
@@ -122,7 +122,7 @@ namespace NovelTee.Controllers
             // if Session["cart"] already has data
             else
             {
-                List<CartItems> cart = (List<CartItems>)Session["cart"];
+                List<CartItem> cart = (List<CartItem>)Session["cart"];
                 var variant = _context.TeeVariants.ToList();
 
                 foreach (var tee in variant)
@@ -141,12 +141,12 @@ namespace NovelTee.Controllers
                 }
                 else
                 {
-                    cart.Add(new CartItems {
+                    cart.Add(new CartItem {
                         Product = cartItems.Product,
                         ProductId = cartItems.Product.Id,
                         TeeVariantId = cartItems.TeeVariantId,
                         TeeVariant = cartItems.TeeVariant,
-                        ShoppingCart = cartItems.ShoppingCart,
+                        //ShoppingCart = cartItems.ShoppingCart,
                         Quantity = 1
                     });
                 }
@@ -158,7 +158,7 @@ namespace NovelTee.Controllers
 
         public ActionResult Remove(int prodId, int varId)
         {
-            List<CartItems> cart = (List<CartItems>)Session["cart"];
+            List<CartItem> cart = (List<CartItem>)Session["cart"];
             int index = IsExist(prodId, varId);
             cart.RemoveAt(index);
             Session["cart"] = cart;
@@ -169,7 +169,7 @@ namespace NovelTee.Controllers
 
         private int IsExist(int prodId, int VarId)
         {
-            List<CartItems> cart = (List<CartItems>)Session["cart"];
+            List<CartItem> cart = (List<CartItem>)Session["cart"];
             for (int i = 0; i < cart.Count; i++)
                 if (cart[i].Product.Id.Equals(prodId) && cart[i].TeeVariant.Id.Equals(VarId))
                     return i;
@@ -178,7 +178,7 @@ namespace NovelTee.Controllers
         
         public ActionResult Update(int prodId, int varId, int qty)
         {
-            List<CartItems> cart = (List<CartItems>)Session["cart"];
+            List<CartItem> cart = (List<CartItem>)Session["cart"];
             int index = IsExist(prodId, varId);
             cart[index].Quantity = qty;
             if(qty == 0)
