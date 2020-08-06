@@ -9,7 +9,7 @@
 
 <h2>Your Cart</h2>
 
-@if (Session["cart"] == null)
+@if (Model.CartItems.Count() == 0)
 {
     <text>There are no items in you cart.</text>
 }
@@ -27,11 +27,11 @@ else
         </thead>
         <tbody>
 
-            @foreach (CartItems item in (List<CartItems>)Session["cart"])
+            @foreach (var item in Model.CartItems)
             {
                 foreach (Product p in Model.Product)
                 {
-                    if (p.Id == item.Product.Id)
+                    if (p.Id == item.ProductId)
                     {
                         <tr>
                             <td>
@@ -42,30 +42,29 @@ else
 
                                 @foreach (TeeVariant t in Model.TeeVariant)
                                 {
-                                    if (t.Id == item.TeeVariant.Id)
+                                    if (t.Id == item.TeeVariantId)
                                     {
                                         @Html.Label(p.Category.Cat_Name)<br />
                                         @Html.Label(t.Gender.Name + " " + t.Size.Name)<br />
                                         @Html.Label(t.Color.Name)<br />
-                                        break;
                                     }
                                 }
-                                <a href="@Url.Action("Remove", "Carts", new { @prodId = item.Product.Id, @varId = item.TeeVariant.Id })">Remove</a>
+                                <a href="@Url.Action("RemoveFromCart", "Carts", new { @prodId = item.ProductId, @varId = item.TeeVariantId})">Remove</a>
                             </td>
                             <td>@p.Price</td>
                             <td>
                                 @foreach (TeeVariant t in Model.TeeVariant)
                                 {
-                                    if (t.Id == item.TeeVariant.Id)
+                                    if (t.Id == item.TeeVariantId)
                                     {
                                         @*@Html.Label(t.Quantity.ToString())
-                                        
-                                        @Html.DropDownList("Quantity", Enumerable.Range(1, t.Quantity).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString()}))*@
+
+                                    @Html.DropDownList("Quantity", Enumerable.Range(1, t.Quantity).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString()}))*@
 
                                         using (Html.BeginForm("Update", "Carts", FormMethod.Post))
                                         {
-                                            @Html.Hidden("prodId", item.Product.Id);
-                                            @Html.Hidden("varId", item.TeeVariant.Id);
+                                            @Html.Hidden("prodId", item.ProductId);
+                                            @Html.Hidden("varId", item.TeeVariantId);
                                             <select id="qty" name="qty">
                                                 @for (int i = 0; i <= t.Quantity; i++)
                                                 {
@@ -85,21 +84,22 @@ else
                                         break;
                                     }
                                 }
-                                
+
                             </td>
-                            <td>@(p.Price * item.Quantity)</td>
+                            <td>@((p.Price * item.Quantity).ToString("C"))</td>
                         </tr>
-                        break;
                     }
+
                 }
             }
         </tbody>
     </table>
     <div class="cart-total">
         <h3>Total</h3>
-        @{
+        @Model.CartTotal.ToString("C")
+        @*@{
             decimal total = 0;
-            List<CartItems> cart = (List<CartItems>)Session["cart"];
+            List<CartItem> cart = (List<CartItem>)Session["cart"];
             foreach (var item in cart)
             {
                 foreach (var p in Model.Product)
@@ -111,7 +111,7 @@ else
                 }
             }
         }
-        @string.Format("{0:c}", total)
+        @string.Format("{0:c}", total)*@
     </div>
 }
 

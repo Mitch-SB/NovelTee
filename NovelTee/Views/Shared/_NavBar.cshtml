@@ -10,8 +10,8 @@
                 <img src='@Url.Content("~/Content/Images/NTLogo.png")' />
             </a>
         </div>
+
 @using NovelTee.Models;
-        
 
         <div class="navbar-collapse collapse">
             
@@ -24,11 +24,12 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    @{
-                        var cartLength = Session["cart"] as List<CartItems>;
-                    }
-                    @Html.ActionLink("Cart (" + (Session["cart"] != null ? cartLength.Count : 0) + ")", "Index", "Carts")
-                    
+                    <a href="@Url.Action("Index", "Carts")">
+                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                        <span id="cart-status">
+                            @{Html.RenderAction("CartSummary", "Carts"); }
+                        </span>
+                    </a>
                 </li>
             </ul>
 

@@ -682,6 +682,7 @@
     <Content Include="Views\Carts\index.cshtml" />
     <Content Include="Views\Shared\_SideBar.cshtml" />
     <Content Include="Views\Checkouts\index.cshtml" />
+    <Content Include="Views\Shared\_CartSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

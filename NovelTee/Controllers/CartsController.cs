@@ -21,6 +21,8 @@ namespace NovelTee.Controllers
         // GET: Cart
         public ActionResult Index()
         {
+            var cart = ShoppingCart.GetCart(HttpContext);
+
             var viewModel = new CartViewModel
             {
                 Product = _context.Products.ToList(),
@@ -29,163 +31,78 @@ namespace NovelTee.Controllers
                 Color = _context.Colors.ToList(),
                 Gender = _context.Genders.ToList(),
                 Size = _context.Sizes.ToList(),
+                CartItems = cart.GetCartItems(),
+                CartTotal = cart.GetTotal()
             };
 
             return View(viewModel);
         }
-        
+
+        [ChildActionOnly]
+        public ActionResult CartSummary()
+        {
+            var cart = ShoppingCart.GetCart(HttpContext);
+            ViewData["CartCount"] = _context.CartItems.Where(c => c.ShoppingCartId == cart.ShoppingCartId).Count();
+            return PartialView("_CartSummary");
+        }
+
         [HttpPost]
         public ActionResult AddToCart(CartItem cartItems)
         {
-            /*  TeeVariant.ColorId: 2
-                TeeVariant.GenderId: 1
-                TeeVariant.SizeId: 2
-                Product.Id: 11
-                TeeVariant.Id:
-             
-             */
-
-
-            //if (!ModelState.IsValid)
-            //{
-            //    ShoppingCart shoppingCart = new ShoppingCart();
-            //    if (User.Identity == null)
-            //    {
-            //        return RedirectToAction("Index");
-            //    }
-
-            //    var newShoppingCart = new ShoppingCart
-            //    {
-            //        ApplicationUserId = ShoppingCart.Guest,
-            //        CreatedDate = DateTime.Today
-            //    };
-            //    _context.ShoppingCarts.Add(newShoppingCart);
-            //    _context.SaveChanges();
-            //}
-
-            //if(cartItems.Id == 0)
-            //{
-            //    var itemsInDb = new CartItems();
-            //    var variant = _context.TeeVariants.ToList();
-
-            //    foreach (var tee in variant)
-            //    {
-            //        if (tee.ColorId == cartItems.TeeVariant.ColorId && tee.SizeId == cartItems.TeeVariant.SizeId && tee.GenderId == cartItems.TeeVariant.GenderId)
-            //        {
-            //            cartItems.TeeVariantId = tee.Id;
-            //        }
-            //    }
-
-            //    itemsInDb.ProductId = cartItems.Product.Id;
-            //    itemsInDb.TeeVariantId = cartItems.TeeVariantId;
-
-            //    if (!ModelState.IsValid)
-            //    {
-            //        //itemsInDb.ShoppingCartId = ShoppingCart.Guest;
-            //    }
-
-
-            //    itemsInDb.Quantity = 1;
-
-            //    _context.CartItems.Add(itemsInDb);
-            //    _context.SaveChanges();
-            //}
-
-
-            //Check if session with cart is empty
-            if (Session["cart"] == null)
+            // Retrieve the product and teevariant from the database
+            var addedTee = _context.Products.Single(t => t.Id == cartItems.Product.Id);
+            
+            foreach (TeeVariant variant in _context.TeeVariants)
             {
-                List<CartItem> cart = new List<CartItem>();
-
-                var variant = _context.TeeVariants.ToList();
-
-                foreach (var tee in variant)
+                if (variant.ColorId == cartItems.TeeVariant.ColorId && variant.SizeId == cartItems.TeeVariant.SizeId && variant.GenderId == cartItems.TeeVariant.GenderId)
                 {
-                    if (tee.ColorId == cartItems.TeeVariant.ColorId && tee.SizeId == cartItems.TeeVariant.SizeId && tee.GenderId == cartItems.TeeVariant.GenderId)
-                    {
-                        cartItems.TeeVariantId = tee.Id;
-                        cartItems.TeeVariant.Id = tee.Id;
-                    }
+                    cartItems.TeeVariantId = variant.Id;
+                    cartItems.TeeVariant.Id = variant.Id;
                 }
-
-                cart.Add(new CartItem
-                {
-                    Product = cartItems.Product,
-                    ProductId = cartItems.Product.Id,
-                    TeeVariantId = cartItems.TeeVariantId,
-                    TeeVariant = cartItems.TeeVariant,
-                    //ShoppingCart = cartItems.ShoppingCart,
-                    Quantity = 1
-                });
-                Session["cart"] = cart;
             }
-            // if Session["cart"] already has data
-            else
+
+            var addedVariant = _context.TeeVariants.Single(v => v.Id == cartItems.TeeVariant.Id);
+
+            // Add it to the shopping cart
+            var cart = ShoppingCart.GetCart(this.HttpContext);
+
+            if (addedTee != null && addedVariant != null)
             {
-                List<CartItem> cart = (List<CartItem>)Session["cart"];
-                var variant = _context.TeeVariants.ToList();
-
-                foreach (var tee in variant)
-                {
-                    if (tee.ColorId == cartItems.TeeVariant.ColorId && tee.SizeId == cartItems.TeeVariant.SizeId && tee.GenderId == cartItems.TeeVariant.GenderId)
-                    {
-                        cartItems.TeeVariantId = tee.Id;
-                        cartItems.TeeVariant.Id = tee.Id;
-                    }
-                }
-
-                int index = IsExist(cartItems.Product.Id, cartItems.TeeVariant.Id);
-                if (index != -1)
-                {
-                    cart[index].Quantity++;
-                }
-                else
-                {
-                    cart.Add(new CartItem {
-                        Product = cartItems.Product,
-                        ProductId = cartItems.Product.Id,
-                        TeeVariantId = cartItems.TeeVariantId,
-                        TeeVariant = cartItems.TeeVariant,
-                        //ShoppingCart = cartItems.ShoppingCart,
-                        Quantity = 1
-                    });
-                }
-                Session["cart"] = cart;
+                cart.AddToCart(addedTee, addedVariant);
             }
+
+            // Go back to the main store page for more shopping
 
             return RedirectToAction("Index", "Carts");
         }
 
-        public ActionResult Remove(int prodId, int varId)
+        public ActionResult RemoveFromCart(int prodId, int varId)
         {
-            List<CartItem> cart = (List<CartItem>)Session["cart"];
-            int index = IsExist(prodId, varId);
-            cart.RemoveAt(index);
-            Session["cart"] = cart;
-            if (cart.Count == 0)
-                Session["cart"] = null;
-            return RedirectToAction("Index");           
+            // Retrieve the product and teevariant from the database
+
+            //Remove it from the shopping cart
+            var cart = ShoppingCart.GetCart(HttpContext);
+
+            if (cart != null)
+            {
+                cart.RemoveFromCart(prodId, varId);
+            }
+
+            return RedirectToAction("Index");        
         }
 
-        private int IsExist(int prodId, int VarId)
+        public ActionResult ClearCart()
         {
-            List<CartItem> cart = (List<CartItem>)Session["cart"];
-            for (int i = 0; i < cart.Count; i++)
-                if (cart[i].Product.Id.Equals(prodId) && cart[i].TeeVariant.Id.Equals(VarId))
-                    return i;
-            return -1;
+            var cart = ShoppingCart.GetCart(HttpContext);
+            cart.ClearCart();
+            return RedirectToAction("Index");
         }
         
         public ActionResult Update(int prodId, int varId, int qty)
         {
-            List<CartItem> cart = (List<CartItem>)Session["cart"];
-            int index = IsExist(prodId, varId);
-            cart[index].Quantity = qty;
-            if(qty == 0)
-                cart.RemoveAt(index);
-            Session["cart"] = cart;
-            if (cart.Count == 0)
-                Session["cart"] = null;
+            var cart = ShoppingCart.GetCart(HttpContext);
+            cart.Update(prodId, varId, qty);
+            
             return RedirectToAction("Index");
         }
     }
