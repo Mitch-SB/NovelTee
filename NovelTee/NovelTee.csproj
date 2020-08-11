@@ -401,6 +401,10 @@
     <Compile Include="Migrations\202007260422328_ReAddCartItem.Designer.cs">
       <DependentUpon>202007260422328_ReAddCartItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008110449145_AddOrderAndOrderDetails.cs" />
+    <Compile Include="Migrations\202008110449145_AddOrderAndOrderDetails.Designer.cs">
+      <DependentUpon>202008110449145_AddOrderAndOrderDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -834,6 +838,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007260422328_ReAddCartItem.resx">
       <DependentUpon>202007260422328_ReAddCartItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008110449145_AddOrderAndOrderDetails.resx">
+      <DependentUpon>202008110449145_AddOrderAndOrderDetails.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

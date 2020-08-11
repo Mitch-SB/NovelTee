@@ -19,6 +19,9 @@ namespace NovelTee.Models
         public DbSet<Size> Sizes { get; set; }
         public DbSet<Gender> Genders { get; set; }
         public DbSet<TeeVariant> TeeVariants { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
         
         //public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<CartItem> CartItems { get; set; }

@@ -313,3 +313,4 @@ C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.csproj
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.csproj.CopyComplete
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.RemoveShoppingCartnCartItems.resources
 C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.ReAddCartItem.resources
+C:\Users\Jack of Dunces\Source\Repos\NovelTee\NovelTee\obj\Debug\NovelTee.Migrations.AddOrderAndOrderDetails.resources
