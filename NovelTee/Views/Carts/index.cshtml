@@ -97,21 +97,6 @@ else
     <div class="cart-total">
         <h3>Total</h3>
         @Model.CartTotal.ToString("C")
-        @*@{
-            decimal total = 0;
-            List<CartItem> cart = (List<CartItem>)Session["cart"];
-            foreach (var item in cart)
-            {
-                foreach (var p in Model.Product)
-                {
-                    if (item.Product.Id == p.Id)
-                    {
-                        total += (item.Quantity * p.Price);
-                    }
-                }
-            }
-        }
-        @string.Format("{0:c}", total)*@
     </div>
 }
 
