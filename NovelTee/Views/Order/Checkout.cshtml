@@ -1,0 +1,47 @@
+﻿@model NovelTee.Models.Order
+
+@using (Html.BeginForm("Checkout", "Order", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <h4>Almost there! You are one step away from a sweet Tee!</h4>
+
+    <div class="form-group">
+        @Html.LabelFor(o => o.FirstName)
+        @Html.TextBoxFor(o => o.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(o => o.FirstName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(o => o.LastName)
+        @Html.TextBoxFor(o => o.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(o => o.LastName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(o => o.Address)
+        @Html.TextBoxFor(o => o.Address, new { @class = "form-control" })
+        @Html.ValidationMessageFor(o => o.Address)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(o => o.City)
+        @Html.TextBoxFor(o => o.City, new { @class = "form-control" })
+        @Html.ValidationMessageFor(o => o.City)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(o => o.State)
+        @Html.TextBoxFor(o => o.State, new { @class = "form-control" })
+        @Html.ValidationMessageFor(o => o.State)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(o => o.ZipCode)
+        @Html.TextBoxFor(o => o.ZipCode, new { @class = "form-control" })
+        @Html.ValidationMessageFor(o => o.ZipCode)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(o => o.PhoneNumber)
+        @Html.TextBoxFor(o => o.PhoneNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(o => o.PhoneNumber)
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            <input type="submit" class="btn btn-primary" value="Complete Order" />
+        </div>
+    </div>
+}

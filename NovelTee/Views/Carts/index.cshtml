@@ -98,6 +98,11 @@ else
         <h3>Total</h3>
         @Model.CartTotal.ToString("C")
     </div>
+    <div class="text-center">
+        <a href="@Url.Action("Checkout", "Order")" class="btn btn-primary">
+            Checkout
+        </a>
+    </div>
 }
 
 @section scripts{
