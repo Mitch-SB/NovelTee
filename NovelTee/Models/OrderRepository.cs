@@ -9,6 +9,7 @@ namespace NovelTee.Models
     {
         private readonly ApplicationDbContext _context;
         private readonly ShoppingCart _shoppingCart;
+        private decimal price;
 
         public OrderRepository(ApplicationDbContext appDbContext, ShoppingCart shoppingCart)
         {
@@ -27,12 +28,20 @@ namespace NovelTee.Models
 
             foreach(var shoppingCartItem in shoppingCartItems)
             {
+                foreach (Product p in _context.Products)
+                {
+                    if (shoppingCartItem.ProductId == p.Id)
+                    {
+                        price = p.Price;
+                    }
+                }
+
                 var orderDetail = new OrderDetail
                 {
                     Quantity = shoppingCartItem.Quantity,
-                    Price = shoppingCartItem.Product.Price,
-                    ProductId = shoppingCartItem.Product.Id,
-                    VariantId = shoppingCartItem.TeeVariant.Id,
+                    Price = price,//
+                    ProductId = shoppingCartItem.ProductId,
+                    VariantId = shoppingCartItem.TeeVariantId,
                     OrderId = order.OrderId
                 };
 

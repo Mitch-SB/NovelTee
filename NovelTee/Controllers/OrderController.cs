@@ -45,7 +45,7 @@ namespace NovelTee.Controllers
                 ModelState.AddModelError("", "Your cart is empty");
             }
 
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 OrderRepository _orderRepository = new OrderRepository(_context, shoppingCart);
                 _orderRepository.CreateOrder(order);

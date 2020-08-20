@@ -1,8 +1,11 @@
 ﻿@model NovelTee.Models.Order
 
+<h4>Almost there! You are one step away from a sweet Tee!</h4>
+
+
 @using (Html.BeginForm("Checkout", "Order", FormMethod.Post, new { @class = "form-horizontal" }))
 {
-    <h4>Almost there! You are one step away from a sweet Tee!</h4>
+    @Html.ValidationSummary()
 
     <div class="form-group">
         @Html.LabelFor(o => o.FirstName)
