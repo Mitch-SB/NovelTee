@@ -25,6 +25,17 @@ namespace NovelTee.Models
 
         public DateTime CreatedDate { get; set; }
 
+        public void MigrateCart(string userName)
+        {
+            var cart = _context.CartItems.Where(c => c.ShoppingCartId == ShoppingCartId);
+
+            foreach (CartItem item in cart)
+            {
+                item.ShoppingCartId = userName;
+            }
+            _context.SaveChanges();
+        }
+
         //public static readonly string Guest = "497c74e3-78d8-415b-a590-38006e849e41";
 
         public static ShoppingCart GetCart(HttpContextBase context)
@@ -33,7 +44,7 @@ namespace NovelTee.Models
             cart.ShoppingCartId = cart.GetCartId(context);
             return cart;
         }
-
+                
         public string GetCartId(HttpContextBase context)
         {
             if(context.Session[CartSessionKey] == null)
@@ -44,7 +55,25 @@ namespace NovelTee.Models
             
             return context.Session[CartSessionKey].ToString();
         }
-        
+
+        public static ShoppingCart SetCart(HttpContextBase context)
+        {
+            var cart = new ShoppingCart();
+            cart.ShoppingCartId = cart.SetCartId(context);
+            return cart;
+        }
+
+        public string SetCartId(HttpContextBase context)
+        {
+            if (context.Session[CartSessionKey] != null)
+            {
+                Guid tempCartId = Guid.NewGuid();
+                context.Session[CartSessionKey] = tempCartId.ToString();
+            }
+
+            return context.Session[CartSessionKey].ToString();
+        }
+
         public void AddToCart(Product product, TeeVariant teeVariant)
         {
             //Get the cart

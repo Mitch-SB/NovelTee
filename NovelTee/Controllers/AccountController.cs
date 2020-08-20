@@ -19,6 +19,15 @@ namespace NovelTee.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+        private void MigrateShoppingCart(string userName)
+        {
+            //Associate shopping cart with user
+            var cart = ShoppingCart.GetCart(HttpContext);
+
+            cart.MigrateCart(userName);
+            Session[ShoppingCart.CartSessionKey] = userName;
+        }
+
         public AccountController()
         {
         }
@@ -73,6 +82,8 @@ namespace NovelTee.Controllers
             {
                 return View(model);
             }
+
+            MigrateShoppingCart(model.Email);
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
@@ -156,6 +167,8 @@ namespace NovelTee.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    MigrateShoppingCart(model.Email);
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
@@ -392,6 +405,9 @@ namespace NovelTee.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            //Sets a new instance of the shopping cart for the next user
+            ShoppingCart.SetCart(HttpContext);
+
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }
