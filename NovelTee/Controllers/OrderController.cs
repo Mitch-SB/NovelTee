@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NovelTee.Models;
+using NovelTee.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +9,9 @@ using System.Web.Mvc;
 
 namespace NovelTee.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
-        
-        //private readonly ShoppingCart _shoppingCart;
         private static ApplicationDbContext _context;
         private static ShoppingCart shoppingCart;
         
@@ -20,11 +20,43 @@ namespace NovelTee.Controllers
             _context = new ApplicationDbContext();
         }
         
-        //private OrderRepository _orderRepository = new OrderRepository(_context, shoppingCart);
-        
         public ActionResult Checkout()
         {
-            return View();
+            var cart = ShoppingCart.GetCart(HttpContext);
+            int qty = 0;
+
+            var viewModel = new OrderViewModel
+            {
+                CartItems = cart.GetCartItems(),
+                CartTotal = cart.GetTotal()
+            };
+
+            foreach (var item in viewModel.CartItems)
+            {
+                qty += item.Quantity;
+            }
+
+            ViewData["CartQty"] = qty;
+
+            return View(viewModel);
+        }
+
+        [ChildActionOnly]
+        public ActionResult ProductCard()
+        {
+            var cart = ShoppingCart.GetCart(HttpContext);
+            var viewModel = new CartViewModel
+            {
+                Product = _context.Products.ToList(),
+                TeeVariant = _context.TeeVariants.ToList(),
+                Category = _context.Categories.ToList(),
+                Color = _context.Colors.ToList(),
+                Gender = _context.Genders.ToList(),
+                Size = _context.Sizes.ToList(),
+                CartItems = cart.GetCartItems(),
+                CartTotal = cart.GetTotal()
+            };
+            return PartialView("_ProductCard", viewModel);
         }
 
         [HttpPost]
@@ -33,12 +65,6 @@ namespace NovelTee.Controllers
             var cart = ShoppingCart.GetCart(HttpContext);
             shoppingCart = cart;
             shoppingCart.CartItems = cart.GetCartItems();
-            //cart.CartItems = cart.GetCartItems();
-
-            //shoppingCart = ShoppingCart.GetCart(HttpContext);
-            //shoppingCart.CartItems = shoppingCart.GetCartItems();
-
-            //_shoppingCart.CartItems = cart.CartItems;
 
             if(shoppingCart.CartItems.Count == 0)
             {

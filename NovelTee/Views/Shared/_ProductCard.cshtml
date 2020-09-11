@@ -1,0 +1,66 @@
+﻿@using NovelTee.Models;
+
+@{
+    <table class="table table-striped">
+        <tbody>
+
+            @foreach (var item in Model.CartItems)
+            {
+                foreach (Product p in Model.Product)
+                {
+                    if (p.Id == item.ProductId)
+                    {
+                        <tr>
+                            <td>
+                                <img src="@p.ImagePath.Replace("~", "")" height="80" />
+                            </td>
+                            <td>
+                                <h5>@p.Name</h5>
+
+                                @foreach (TeeVariant t in Model.TeeVariant)
+                                {
+                                    if (t.Id == item.TeeVariantId)
+                                    {
+                                        @Html.Label(p.Category.Cat_Name)<br />
+                                        @Html.Label(t.Gender.Name + " " + t.Size.Name)<br />
+                                        @Html.Label(t.Color.Name)<br />
+                                    }
+                                }
+
+
+                                @foreach (TeeVariant t in Model.TeeVariant)
+                                {
+                                    if (t.Id == item.TeeVariantId)
+                                    {
+                                        <p>Qty: @item.Quantity</p>
+                                    }
+                                }
+                            </td>
+                            <td>@((p.Price * item.Quantity).ToString("C"))</td>
+                        </tr>
+                    }
+
+                }
+            }
+        </tbody>
+    </table>
+}
+
+@*<td>
+        @foreach (TeeVariant t in Model.TeeVariant)
+        {
+            if (t.Id == item.TeeVariantId)
+            {
+                @for (int i = 0; i <= t.Quantity; i++)
+                {
+                    string s = "";
+                    if (i == item.Quantity)
+                    {
+                        s = "selected";
+                    };
+
+
+                }
+            }
+
+    </td>*@
