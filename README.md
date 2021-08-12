@@ -2,7 +2,7 @@
 Asp.Net MVC Website
 
 ## Pictures
-![NovelTee_Schema](https://user-images.githubusercontent.com/36740718/127787941-ae90f955-52b9-44c2-8f6f-91241ecfc2d9.png)
+![NovelTee_Schema](https://user-images.githubusercontent.com/36740718/129129831-d28b84e2-1d65-462c-85e6-2287c69899aa.png)
 ![NT-Browse](https://user-images.githubusercontent.com/36740718/127787946-5ff49cb0-0299-465e-b118-6652b225517c.png)
 ![NT-ProductForm](https://user-images.githubusercontent.com/36740718/127787950-7cea2ef1-4a00-472e-9900-bd6879c2892e.png)
 ![NT-ManageProduct](https://user-images.githubusercontent.com/36740718/127787959-2afe3f5a-e950-49dd-8c06-04217c1d6ef5.png)
